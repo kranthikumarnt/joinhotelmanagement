@@ -1,8 +1,10 @@
 import React, {useState}  from 'react';
+import { useHistory } from "react-router-dom";
 import Classes from './login.module.css';
 
 const Login = (props) => {
     // all teh data in the page can be fetched using these fields
+    const history =useHistory();
     console.log(props);
     const [l_email, setLemail] = useState(null);
     const [l_password, setLpassword] = useState(null);
@@ -15,6 +17,14 @@ const Login = (props) => {
     var error = "is-invalid";
     let onLoginSubmit=(e) =>{
         e.preventDefault();
+        // validation for the login goes here
+        if(l_email === "test@test.com" && l_password === "test123"){
+            console.log(props)
+            history.push("/Home")
+        }
+        else{
+            alert("username or password not valid");
+        }
     }
     let onSignupSubmit=(e) =>{
         e.preventDefault();
